@@ -17,10 +17,11 @@ app.post('/',(req,res)=>{
         var file = req.files.file
         var filename = file.name
         console.log(filename,file.mimetype)
-        file.mv('/uploads/',filename,(err)=>{
+        file.mv('./uploads/'+filename,(err)=>{
             if(err) {
                 console.log(err)
                 res.send(err)
+                return
             }   res.send("file uploaded!")
         })
     }
